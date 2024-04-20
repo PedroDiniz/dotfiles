@@ -29,18 +29,24 @@ in {
     package = hyprland;
     systemd.enable = true;
     xwayland.enable = true;
-    # plugins = with plugins; [ hyprbars borderspp ];
+    plugins = with plugins; [
+      hyprexpo
+      # hyprbars
+      # borderspp
+    ];
 
     settings = {
+      env = [
+        "WLR_DRM_NO_ATOMIC,1"
+      ];
       exec-once = [
         "ags -b hypr"
         "hyprctl setcursor Qogir 24"
       ];
 
       monitor = [
-        # "eDP-1, 1920x1080, 0x0, 1"
+        "eDP-1,1920x1200,0x0,1"
         # "HDMI-A-1, 2560x1440, 1920x0, 1"
-        "DP-1,3840x1080,0x0,1"
       ];
 
       general = {
@@ -64,6 +70,7 @@ in {
         };
         sensitivity = 0;
         float_switch_override_focus = 2;
+        numlock_by_default = true;
       };
 
       binds = {
@@ -73,7 +80,7 @@ in {
       dwindle = {
         pseudotile = "yes";
         preserve_split = "yes";
-        # no_gaps_when_only = "yes";
+        no_gaps_when_only = "yes";
       };
 
       gestures = {
@@ -99,6 +106,8 @@ in {
         (f "com.github.Aylur.ags")
         "workspace 7, title:Cider"
       ];
+
+      windowrulev2 = ["immediate, class:^(cs2)$"];
 
       bind = let
         binding = mod: cmd: key: arg: "${mod}, ${key}, ${cmd}, ${arg}";
@@ -132,6 +141,8 @@ in {
           "SUPER, G, fullscreen"
           "SUPER, O, fakefullscreen"
           "SUPER, P, togglesplit"
+
+          "SUPER, space, hyprexpo:expo, toggle"
 
           (mvfocus "k" "u")
           (mvfocus "j" "d")
@@ -185,14 +196,14 @@ in {
         dim_inactive = false;
 
         blur = {
-          enabled = false;
+          enabled = true;
           size = 8;
           passes = 3;
           new_optimizations = "on";
           noise = 0.01;
           contrast = 0.9;
           brightness = 0.8;
-          popups = false;
+          popups = true;
         };
       };
 
@@ -209,6 +220,15 @@ in {
       };
 
       plugin = {
+        hyprexpo = {
+          columns = 3;
+          gap_size = 5;
+          bg_col = "rgb(232323)";
+          workspace_method = "center current";
+          enable_gesture = true;
+          gesture_distance = 300;
+          gesture_positive = false;
+        };
         hyprbars = {
           bar_color = "rgb(2a2a2a)";
           bar_height = 28;

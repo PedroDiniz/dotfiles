@@ -52,7 +52,6 @@ class Nix extends Service {
     nixpkgs.connect("changed", this.#updateList);
   }
 
-  // eslint-disable-next-line space-before-function-paren
   query = async (filter: string) => {
     if (!dependencies("fzf", "nix") || !this.#ready) return [] as string[];
 
@@ -65,7 +64,6 @@ class Nix extends Service {
     return Utils.execAsync(`nix ${cmd} ${nixpkgs}#${bin} --impure ${args}`);
   }
 
-  // eslint-disable-next-line space-before-function-paren
   run = async (input: string) => {
     if (!dependencies("nix")) return;
 

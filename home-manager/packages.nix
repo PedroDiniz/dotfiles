@@ -30,6 +30,12 @@
     bitwarden-desktop
     fnm
 
+    # langs
+    poetry
+    nodejs
+    yarn
+    go
+
     # tools
     bat
     eza
@@ -58,6 +64,7 @@
     lutris
     winetricks
     wine-staging
+    webcord-vencord
 
     # fun
     glow

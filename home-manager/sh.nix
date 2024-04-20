@@ -24,12 +24,16 @@
     "gr" = "git reset --soft HEAD~1";
     "del" = "gio trash";
 
-    "cfg" = "code /home/kaldr/Projects/dotfiles";
+    "cfg" = "code /home/kaldr/GitHub/dotfiles";
 
     "nxcg" = "sudo nix-collect-garbage";
     "nxst" = "sudo nixos-rebuild switch --flake github:PedroDiniz/dotfiles --impure";
     "nxbt" = "sudo nixos-rebuild boot --flake github:PedroDiniz/dotfiles --impure";
-    "pjts" = "cd /home/kaldr/Projects";
+    "nxst-desk" = "sudo nixos-rebuild switch --flake github:PedroDiniz/dotfiles/desktop --impure";
+    "nxbt-desk" = "sudo nixos-rebuild boot --flake github:PedroDiniz/dotfiles/desktop --impure";
+    "nxst-lptp" = "sudo nixos-rebuild switch --flake github:PedroDiniz/dotfiles/laptop --impure";
+    "nxbt-lptp" = "sudo nixos-rebuild boot --flake github:PedroDiniz/dotfiles/laptop --impure";
+    "pjts" = "cd /home/kaldr/GitHub";
     "forky" = "clear;neofetch";
   };
 in {
@@ -109,13 +113,15 @@ in {
             }
           ];
         };
-        completion = name: ''
-          source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/${name}/${name}-completions.nu
-        '';
-        completions = names:
-          builtins.foldl'
-          (prev: str: "${prev}\n${str}") ""
-          (map (name: completion name) names);
+        completions = let
+          completion = name: ''
+            source ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/${name}/${name}-completions.nu
+          '';
+        in
+          names:
+            builtins.foldl'
+            (prev: str: "${prev}\n${str}") ""
+            (map (name: completion name) names);
       in ''
         $env.config = ${conf};
         ${completions ["cargo" "git" "nix" "npm"]}

@@ -1,9 +1,9 @@
 {config, ...}: {
   # asusctl
-  services.asusd = {
-    enable = true;
-    enableUserService = true;
-  };
+  # services.asusd = {
+  #   enable = true;
+  #   enableUserService = true;
+  # };
 
   # nvidia
   hardware.opengl = {
@@ -18,8 +18,8 @@
     prime = {
       offload.enable = true;
       offload.enableOffloadCmd = true;
+      intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
-      amdgpuBusId = "PCI:6:0:0";
     };
 
     modesetting.enable = true;
@@ -30,7 +30,7 @@
     };
 
     open = true;
-    nvidiaSettings = false; # gui app
+    nvidiaSettings = true; # gui app
     package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 }
