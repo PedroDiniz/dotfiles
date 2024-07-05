@@ -29,6 +29,8 @@
     thunderbird
     bitwarden-desktop
     fnm
+    rustc
+    cargo
 
     # tools
     bat

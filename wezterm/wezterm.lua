@@ -8,13 +8,13 @@ fi
 ]]
 
 return {
-    enable_wayland = false,
+    enable_wayland = true,
     color_schemes = {
         ["Gnome Light"] = require("gnome"),
         ["Charmful Dark"] = require("charmful"),
     },
     color_scheme = "Charmful Dark",
-    font = require("wezterm").font("CaskaydiaCove NF"),
+    font = require("wezterm").font("Firacode"),
     cell_width = 0.9,
     default_cursor_style = "BlinkingBar",
 

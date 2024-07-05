@@ -34,7 +34,6 @@
     "nxst-lptp" = "sudo nixos-rebuild switch --flake github:PedroDiniz/dotfiles/laptop --impure";
     "nxbt-lptp" = "sudo nixos-rebuild boot --flake github:PedroDiniz/dotfiles/laptop --impure";
     "pjts" = "cd /home/kaldr/Projects";
-    "forky" = "clear;neofetch";
   };
 in {
   programs = {

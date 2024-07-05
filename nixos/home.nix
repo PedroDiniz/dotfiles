@@ -4,11 +4,11 @@
     ../home-manager/ags.nix
     ../home-manager/blackbox.nix
     ../home-manager/browser.nix
-    # ../home-manager/bspwm.nix
+    ../home-manager/bspwm.nix
     ../home-manager/dconf.nix
     ../home-manager/distrobox.nix
-    ../home-manager/git.nix
-    # ../home-manager/helix.nix
+    # ../home-manager/git.nix
+    ../home-manager/helix.nix
     ../home-manager/hyprland.nix
     ../home-manager/lf.nix
     ../home-manager/neofetch.nix
@@ -20,7 +20,7 @@
     ../home-manager/theme.nix
     ../home-manager/tmux.nix
     ../home-manager/wezterm.nix
-    ../home-manager/vscode.nix
+    # ../home-manager/vscode.nix
   ];
 
   news.display = "show";
@@ -45,20 +45,19 @@
     ];
   };
 
-  gtk.gtk3.bookmarks = let
-    home = config.home.homeDirectory;
-  in [
-    "file://${home}/Projects"
-    "file://${home}/Work"
-    "file://${home}/Downloads"
-    "file://${home}/Desktop"
-    "file://${home}/MyNotes"
-    "file://${home}/Documents"
-    "file://${home}/Pictures"
-    "file://${home}/Videos"
-    "file://${home}/.config Config"
-    "file://${home}/.local/share Local"
-  ];
+  # gtk.gtk3.bookmarks = let
+  #   home = config.home.homeDirectory;
+  # in [
+  #   "file://${home}/Projects"
+  #   "file://${home}/Work"
+  #   "file://${home}/Downloads"
+  #   "file://${home}/Desktop"
+  #   "file://${home}/Documents"
+  #   "file://${home}/Pictures"
+  #   "file://${home}/Videos"
+  #   "file://${home}/.config Config"
+  #   "file://${home}/.local/share Local"
+  # ];
 
   services = {
     kdeconnect = {

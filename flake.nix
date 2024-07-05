@@ -57,7 +57,7 @@
 
     # nixos hm config
     homeConfigurations = let
-      username = "kaldr";
+      username = "pedro";
     in {
       "${username}" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
